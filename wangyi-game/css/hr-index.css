@@ -1,0 +1,614 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: #000000;
+}
+/*头部导航*/
+header .nav:after,.search ul:after,.remen ul:after,.content2 .box2 ul:after,.wfgd-left:after,.cont:after,.link:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+header{
+    padding-top: 6px;
+    position: absolute;
+    background-color: #FFFFFF;
+    width: 100%;
+    z-index: 100;
+}
+header .nav{
+    width: 1200px;
+    margin: 0 auto;
+    /*background-color: #FFBD9D;*/
+}
+header .logo{
+    width: 140px;
+    height: 50px;
+    float: left;
+    background: url("../images/netease_logo.png") no-repeat 0 -38px;
+}
+header ul:first-of-type{
+    float: left;
+    padding-left: 80px;
+}
+header .login{
+    float: right;
+}
+header ul li{
+    float: left;
+}
+header ul:first-of-type{
+    margin-top: 6px;
+}
+header ul:first-of-type li a{
+    display: inline-block;
+    padding: 0 25px;
+    text-align: center;
+    font-size: 15px;
+    line-height: 46px;
+    border-bottom: 4px solid transparent;
+    color: #000000;
+}
+header ul:first-of-type li:first-of-type a{
+    border-bottom: 4px solid red;
+}
+header ul:first-of-type li:hover a{
+    border-bottom: 4px solid red;
+}
+header .login{
+    padding-top: 8px;
+}
+header .login li{
+    border: 1px solid #999;
+}
+header .login li:first-child{
+    margin-right: 10px;
+}
+header .login a{
+    display: inline-block;
+    text-align: center;
+    font-size: 14px;
+    padding: 4px 15px;
+    line-height: 20px;
+    color: #000000;
+}
+header .login li:first-child a{
+    color: white;
+    background-color: red;
+}
+header .changeBg{
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    right: 0;
+    bottom: -80px;
+    background: url("../images/scene_trigger.png") no-repeat;
+    background-position: 0 0;
+    z-index: 100;
+}
+/*第一页*/
+.content1{
+    width: 100%;
+    /*height: 626px;*//*去掉了固定高度，该用后面的jquery设置页面的高度*/
+    background-image: url("../images/v_bg_01.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 140% 140%;
+    transition: all .8s;
+    -webkit-transition:all .8s;;
+    border-bottom: 2px solid #000000;
+    position: relative;
+}
+.content1 .box1{
+    width: 100%;
+    height: 100%;
+    padding-top: 140px;
+}
+.content1 .box1 .careers{
+    width: 227px;
+    height: 13px;
+    background: url("../images/v_h3_search.png") no-repeat;
+    margin: 0 auto;
+    position: relative;
+}
+.content1 .box1 .t_logo{
+    width: 640px;
+    height: 72px;
+    background: url("../images/v_h1_title.png");
+    margin: 0 auto;
+    margin-top: 25px;
+    position: relative;
+}
+.search{
+    width: 800px;
+    margin: 0 auto;
+    margin-top: 80px;
+    border: 2px solid #c4e3f3;
+    font-size: 16px;
+    background-color: #FFFFFF;
+    position: relative;
+}
+.search>ul>li{
+   float: left;
+    text-align: center;
+    line-height: 30px;
+    padding: 10px 11px;
+    position: relative;
+
+}
+.search>ul>li>a span:last-child{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-left: 6px;
+    vertical-align: middle;
+    background:url("../images/netease_logo.png") no-repeat -46px -170px;
+}
+.search ul li input{
+    font-size: 16px;
+    width: 496px;
+    border: 0;
+}
+.search ul li input:focus{
+    outline: none;
+}
+.search>ul>li:last-child{
+    background-color: red;
+}
+.search>ul>li:last-child>a{
+    color: #FFFFFF;
+}
+.search>ul>li ul li{
+    line-height: 28px;
+}
+.search>ul>li ul{
+    position: absolute;
+    left: 0;
+    top:50px;
+    background-color: #FFFFFF;
+    font-size: 14px;
+    text-align: center;
+    padding: 1px 4px;
+    display: none;
+}
+.search>ul>li:first-child ul li a{
+    display: inline-block;
+    width: 72px;
+    line-height: 20px;
+    margin: 1px 0;
+}
+.search>ul>li ul li a:hover{
+    background-color: #a4acac;
+}
+.search>ul>li:nth-child(2) ul li a{
+    display: inline-block;
+    width: 92px;
+    line-height: 20px;
+    margin: 1px 0;
+}
+.remen{
+    position: relative;
+}
+.remen ul{
+    width: 194px;
+    margin: 0 auto;
+    margin-top: 16px;
+}
+.remen ul li{
+    float: left;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    margin-right: 8px;
+
+}
+.remen ul li:hover a{
+    text-decoration: underline;
+}
+.box1 .mouse{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: red url("../images/mousedown_tips.png") no-repeat center 15px;
+    position: absolute;
+    left:50%;
+    margin-left:-35px; /*元素宽度的一半*/
+    bottom: 40px;
+    transition: all .3s;
+    -webkit-transition: all .3s;
+}
+.box1 .mouse:hover{
+    background: white url("../images/mousedown_tips.png") no-repeat center -85px;
+}
+/*第二页*/
+.content2{
+    width: 100%;
+    /*height: 626px;*/
+    background-image: url("../images/v_bg_02.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 140% 140%;
+    transition: all .8s;
+    -webkit-transition:all .8s;
+    border-top: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+    position: relative;
+}
+.content2 .box2{
+    width: 100%;
+    height: 100%;
+    padding-top: 130px;
+}
+.content2 .box2 .careers{
+    width: 116px;
+    height: 13px;
+    background: url("../images/v_h3_job.png") no-repeat;
+    margin: 0 auto;
+}
+.content2 .box2 h3{
+    font-size: 43px;
+    text-align: center;
+    margin-top: 10px;
+}
+.content2 .box2 ul{
+    width: 1160px;
+    height: 166px;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+.content2 .box2 ul li{
+    float: left;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 44px;
+}
+.content2 .box2 ul li:last-child{
+    margin-right: 0;
+}
+.content2 .box2 ul li p{
+    line-height: 24px;
+    padding: 10px 0;
+}
+.content2 .box2 .box-big{
+    width: 122px;
+    padding: 24px 0;
+    border-radius: 50%;
+    border: 2px solid #53ccff;
+    background-color: #53ccff;
+}
+.content2 .box2 .box-small{
+    height: 70px;
+    background:url("../images/category_icon.png") no-repeat 0 -272px;
+}
+/*第二个li*/
+.content2 .box2 ul li:nth-child(2) .box-big{
+    border: 2px solid #01c1b2;
+    background-color: #01c1b2;
+}
+.content2 .box2 ul li:nth-child(2) .box-small{
+    background-position:  0 -348px;
+}
+/*第三个li*/
+.content2 .box2 ul li:nth-child(3) .box-big{
+    border: 2px solid #505976;
+    background-color: #505976;
+}
+.content2 .box2 ul li:nth-child(3) .box-small{
+    background-position:  0 -425px;
+}
+/*第四个*/
+.content2 .box2 ul li:nth-child(4) .box-big{
+    border: 2px solid #00b7ee;
+    background-color: #00b7ee;
+}
+.content2 .box2 ul li:nth-child(4) .box-small{
+    background-position:  0 -492px;
+}
+/*第五个*/
+.content2 .box2 ul li:nth-child(5) .box-big{
+    border: 2px solid #ff63bf;
+    background-color: #ff63bf;
+}
+.content2 .box2 ul li:nth-child(5) .box-small{
+    background-position:  0 -572px;
+}
+/*第六个*/
+.content2 .box2 ul li:nth-child(6) .box-big{
+    border: 2px solid #42b8ea;
+    background-color: #42b8ea;
+}
+.content2 .box2 ul li:nth-child(6) .box-small{
+    background-position:  0 -194px;
+}
+
+/*第七个*/
+.content2 .box2 ul li:nth-child(7) .box-big{
+    border: 2px solid #80c269;
+    background-color: #80c269;
+}
+.content2 .box2 ul li:nth-child(7) .box-small{
+    background-position:  -3px -660px;
+}
+
+.box2 .mouse{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: red url("../images/mousedown_tips.png") no-repeat center 15px;
+    position: absolute;
+    left:50%;
+    margin-left:-35px; /*元素宽度的一半*/
+    bottom: 40px;
+    transition: all .3s;
+    -webkit-transition: all .3s;
+}
+.box2 .mouse:hover{
+    background: white url("../images/mousedown_tips.png") no-repeat center -85px;
+}
+/*第三个页面*/
+.content3{
+    width: 100%;
+    /*height: 626px;*/
+    background-image: url("../images/v_bg_03.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+    transition: all .8s;
+    -webkit-transition:all .8s;
+    border-top: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+    position: relative;
+}
+.content3 .box3{
+    width: 100%;
+    height: 100%;
+    padding-top: 70px;
+}
+.content3 .box3 .careers{
+    width: 115px;
+    height: 13px;
+    background: url("../images/v_h3_hot.png") no-repeat;
+    margin: 0 auto;
+}
+.content3 .box3 h3{
+    font-size: 43px;
+    text-align: center;
+    margin-top: 10px;
+}
+/*无缝滚动部分*/
+.wfgd{
+    width: 950px;
+    margin: 0 auto;
+    padding: 0 14px;
+    margin-top: 130px;
+}
+.wfgd-left{
+    width: 450px;
+    padding-right: 50px;
+    float: left;
+    position: relative;
+}
+.wfgd h4{
+    border-left: 4px solid red;
+    padding-left: 20px;
+    font-size: 22px;
+    font-weight: bold;
+
+}
+.wfgd h4 a{
+    display: block;
+    border: 1px solid #000000;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    float: right;
+}
+.wfgd ul{
+    float: right;
+    font-size: 15px;
+    margin-top: 40px;
+    overflow: hidden;
+    height: 192px;
+}
+.wfgd ul li{
+    width: 350px;
+    padding: 6px 0;
+    line-height: 20px;
+}
+.wfgd ul li a:hover{
+    text-decoration: underline;
+}
+.wfgd ul li span{
+    display: block;
+    float: right;
+    font-size: 13px;
+}
+.wfgd-right{
+    width: 450px;
+    padding-right: 50px;
+    float: right;
+    position: relative;
+}
+.box3 .mouse{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: red url("../images/mousedown_tips.png") no-repeat center 15px;
+    position: absolute;
+    left:50%;
+    margin-left:-35px; /*元素宽度的一半*/
+    bottom: 40px;
+    transition: all .3s;
+    -webkit-transition: all .3s;
+}
+.box3 .mouse:hover{
+    background: white url("../images/mousedown_tips.png") no-repeat center -85px;
+}
+/*第四页*/
+.content4{
+    width: 100%;
+    /*height: 626px;*/
+    background-image: url("../images/v_bg_04.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+    transition: all .8s;
+    -webkit-transition:all .8s;
+    border-top: 2px solid #000000;
+    position: relative;
+}
+.content4 .box4{
+    width: 100%;
+    height: 100%;
+    padding-top: 70px;
+}
+.content4 .box4 .careers{
+    width: 200px;
+    height: 13px;
+    background: url("../images/v_h3_about.png") no-repeat;
+    margin: 0 auto;
+}
+.content4 .box4 h3 {
+    font-size: 43px;
+    text-align: center;
+    margin-top: 10px;
+}
+.video{
+    width: 720px;
+    height: 390px;
+    border: 6px solid #000000;
+    float: left;
+    position: relative;
+}
+video{
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+.word{
+    width: 230px;
+    float: right;
+    font-size: 14px;
+    padding-top: 30px;
+    position: relative;
+}
+.word p{
+    line-height: 24px;
+    padding: 10px 0;
+}
+.cont{
+    width: 1000px;
+    margin: 0 auto;
+    margin-top: 44px;
+}
+.cont a{
+    display: inline-block;
+    color: white;
+    font-size: 15px;
+    padding: 4px 15px;
+    line-height: 20px;
+    background: red;
+    float: right;
+    margin: 20px 0;
+}
+/*返回顶部*/
+.back a{
+    text-align: center;
+    background: #e5e5e5;
+    font-size: 14px;
+    line-height: 36px;
+    display: block;
+    margin-top: -35px;
+}
+.back a:hover{
+    color: #a4acac;
+    text-decoration: underline;
+}
+.back a span{
+    display: inline-block;
+    width: 18px;
+    height: 16px;
+    background:url("../images/netease_logo.png") no-repeat;
+    background-position: 2px -432px;
+    vertical-align: middle;
+}
+/*尾部*/
+/*footer{
+    background: #3d3d39;
+    padding: 40px 0;
+}
+.link{
+    margin: 0 auto;
+    color: #8A8A8A;
+    font-size: 12px;
+    line-height: 31px;
+    width: 685px;
+}
+.link .footer-logo{
+    display: block;
+    width: 253px;
+    height: 31px;
+    background: url("../images/netease_logo.png") no-repeat 0 0;
+    float: left;
+    margin-top: 15px;
+    margin-right: 20px;
+}
+.link .footer-logo a{
+    color: #8A8A8A;
+}
+.link .footer-cont{
+    width: 410px;
+    font-size: 12px;
+    height: 31px;
+    float: left;
+}
+.link .footer-cont a{
+    color: #8A8A8A;
+}
+.link .footer-cont a:hover{
+    color: #dd0101;
+    text-decoration: underline;
+}*/
+
+
+/**/
+.big-box{
+    width: 100%;
+    /*height: 626px;*/
+    overflow: hidden;
+}
+/*侧边固定按钮*/
+.right_fixed{
+    position:fixed;
+    width:15px;
+    right:60px;
+    top:243px;
+    z-index:999;
+}
+.right_fixed ul li{
+    box-sizing: content-box;
+    background:white;
+    width:10px;
+    height: 10px;
+    border-radius:50%;
+    border: 5px solid transparent;
+    margin-bottom: 20px;}
+.right_fixed ul li.active{
+    background:red;
+    border: 5px solid rgba(220,220,220,.8);
+}
+.right_fixed ul li:hover{
+    cursor:pointer;
+}
