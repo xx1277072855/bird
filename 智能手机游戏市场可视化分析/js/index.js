@@ -33,29 +33,34 @@ $(function () {
 });
 
 
-
 function drawBar(){
+    //第一个图的数据
+    var xData = ['2008','2009','2010','2011','2012','2013','2014','2015','2016','2017','2018'];
+    var yData0 = [0.6,0.77,1.12,1.67,2.13,3.2,4.207,4.341,4.67,4.443,3.977];
+    var yData1 = [12,14.5,35,70,135,50.2,31.5,2.50,7.60,-4.90,-10.5];
     myecharts_bar=echarts.init(document.getElementById('myecharts_bar'));
-    var options= {
-         /*title: {
-         text: '市场规模增长率',
-         textStyle:{
-         color:'#fff',
-         fontSize:18,
-         fontFamily:'微软雅黑',
-         fontWeight:'normal'
-         }*/
-             title: {
-                 text: '游戏市场的实际销售收入',
-                 left: 'center',
-                 textStyle:{
-                     color:'#fff'
-                 }
-             },
-        tooltip : {
+    var options =
+    {
+        title: {
+            text: '国内历年手机市场出货量、增长率',
+            left: 'center',
+            textStyle:{
+                color:'#fff'
+            }
+        },
+        grid: {
+            right: '12%'
+        },
+        tooltip: {
             trigger: 'axis',
-            axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-                type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+            axisPointer: {
+                type: 'cross',
+                label: {
+                    backgroundColor: '#6a7985'
+                },
+                crossStyle: {
+                    color: '#fff'
+                }
             }
         },
         legend: {
@@ -63,207 +68,387 @@ function drawBar(){
          textStyle:{
          color:'#fff'
          },
-         data: ['移动游戏市场','客户端游戏市场','网页游戏市场']
+         data:['出货量','增长率']
          },
-        grid: {
-            top:'50',
-            left: '3%',
-            right: '5%',
-            bottom: '35',
-            containLabel: true
-        },
-        xAxis:  {
-            type: 'value',
-            axisLabel:{
-                show:true,
-                textStyle:{
-                    color:'#fff'
-                }
-            },
-            axisLine:{
-                lineStyle:{
-                    color:'#fff'
-                }
-            },
-            splitLine:{
-                lineStyle:{
-                    color:'#3d6981'
+        xAxis: [
+            {
+                 axisLine:{
+                 lineStyle:{
+                 color:'#fff'
+                 //width:1
+                 }
+                 },
+                 axisLabel:{
+                 interval:'0',
+                 textStyle:{
+                 color:'#fff'
+                 }
+                 },
+                type: 'category',
+                boundaryGap: true,
+                data: (function () {
+                    var res = xData.slice(0,6);
+                    return res;
+                })(),
+                axisPointer: {
+                    type: 'shadow'
                 }
             }
-        },
-        yAxis: {
-            type: 'category',
-            axisLabel:{
-                interval:0,
-                show:true,
-                textStyle:{
-                    color:'#fff'
-                }
+        ],
+        yAxis: [
+            {
+                type: 'value',
+                name: '出货量(亿)',
+                axisLine:{
+                 lineStyle:{
+                 color:'#fff'
+                 //width:1
+                 }
+                 },
+                 axisLabel:{
+                 interval:'0',
+                 textStyle:{
+                 color:'#fff'
+                 },
+                 formatter: '{value}'
+                 },
+                 splitLine:{
+                 lineStyle:{
+                 type:'dashed',
+                 color:'#3d6981'
+                 }
+                 }
             },
-            axisLine:{
-                lineStyle:{
-                    color:'#fff'
-                }
-            },
-            axisTick: {
-                alignWithLabel: true
-            },
-            data: ['2008','2009','2010','2011','2012','2013','2014','2015','2016','2017']
-
-
-        },
+            {
+                type: 'value',
+                name: '增长率',
+                /*min: -20,
+                max: 150,*/
+                //interval: 5,
+                axisLine:{
+                 lineStyle:{
+                 color:'#fff'
+                 //width:1
+                 }
+                 },
+                 axisLabel:{
+                 interval:'0',
+                 textStyle:{
+                 color:'#fff'
+                 },
+                 formatter: '{value}%'
+                 },
+                 splitLine:{
+                 lineStyle:{
+                 type:'dashed',
+                 color:'#3d6981'
+                 }
+                 }
+            }
+        ],
         series: [
             {
-                name: '移动游戏市场',
+                name: '出货量',
                 type: 'bar',
-                stack: '总量',
-                label: {
-                    normal: {
-                        show: false,
-                        position: 'insideRight'
-                    }
-                },
-                itemStyle:{
-                    normal:{
-                        color:'	#DC143C'
-                    }
-                },
-                data: [1.5,6.4,9.1,17,32.4,112.4,274.9,514.6,819.2,1161.2]
+                barWidth: '60%',
+                data: (function () {
+                    var len = yData0.slice(0, 6);
+                    return len;
+                })()
             },
             {
-                name: '客户端游戏市场',
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    normal: {
-                        show: false,
-                        position: 'insideRight'
+                name:'增长率',
+                type:'line',
+                yAxisIndex: 1,
+                itemStyle : {
+                    normal : {
+                        color:'#81b6b2',
+                        lineStyle:{
+                            color:'#81b6b2'
+                        }
                     }
                 },
-                itemStyle:{
-                    normal:{
-                        color:'#4682B4'
-                    }
-                },
-                data: [167.1, 233.2, 271.6, 366.9, 451.2, 536.6, 608.9,611.6,582.5,648.6]
-            },
-            {
-                name: '网页游戏市场',
-                type: 'bar',
-                stack: '总量',
-                label: {
-                    normal: {
-                        show: false,
-                        position: 'insideRight'
-                    }
-                },
-                itemStyle:{
-                    normal:{
-                        color:'#FFD700'
-                    }
-                },
-                data: [4.5,14,41.8,55.4,81.1,127.7,202.7,219.6,187.1,156]
+                data:(function () {
+                    var len = yData0.slice(0, 6);
+                    return len;
+                })()
             }
         ]
     };
     myecharts_bar.setOption(options);
+    var n =6;
+    setInterval(function () {
+        axisDataX = xData[n];
+        axisDataY0 = yData0[n];
+        axisDataY1 = yData1[n];
+        var data0 = options.series[0].data,
+            data1 = options.series[1].data;
+        data0.shift();
+        data0.push(axisDataY0);
+        data1.shift();
+        data1.push(axisDataY1);
+        options.xAxis[0].data.shift();
+        options.xAxis[0].data.push(axisDataX);
+        myecharts_bar.setOption(options);
+        n++;
+        if(n==11){
+            n=0;
+        }
+    },2000)/*{
+            title: {
+                text: '国内历年手机市场出货量、增长率',
+                left: 'center',
+                textStyle:{
+                    color:'#fff'
+                }
+            },
+            grid: {
+                right: '12%'
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    label: {
+                        backgroundColor: '#6a7985'
+                    },
+                    crossStyle: {
+                        color: '#fff'
+                    }
+                }
+            },
+            legend: {
+                bottom:'6',
+                textStyle:{
+                    color:'#fff'
+                },
+                data:['出货量','增长率']
+            },
+            xAxis: [
+                {
+                    axisLine:{
+                        lineStyle:{
+                            color:'#fff'
+                            //width:1
+                        }
+                    },
+                    axisLabel:{
+                        interval:'0',
+                        textStyle:{
+                            color:'#fff'
+                        }
+                    },
+                    type: 'category',
+                    data: ['2012','2013','2014','2015','2016','2017','2018'],
+                    axisPointer: {
+                        type: 'shadow'
+                    }
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value',
+                    name: '出货量(亿)',
+                    axisLine:{
+                        lineStyle:{
+                            color:'#fff'
+                            //width:1
+                        }
+                    },
+                    axisLabel:{
+                        interval:'0',
+                        textStyle:{
+                            color:'#fff'
+                        },
+                        formatter: '{value}'
+                    },
+                    splitLine:{
+                        lineStyle:{
+                            type:'dashed',
+                            color:'#3d6981'
+                        }
+                    }
+                },
+                {
+                    type: 'value',
+                    name: '增长率',
+                    min: -20,
+                    max: 150,
+                    //interval: 5,
+                    axisLine:{
+                        lineStyle:{
+                            color:'#fff'
+                            //width:1
+                        }
+                    },
+                    axisLabel:{
+                        interval:'0',
+                        textStyle:{
+                            color:'#fff'
+                        },
+                        formatter: '{value}%'
+                    },
+                    splitLine:{
+                        lineStyle:{
+                            type:'dashed',
+                            color:'#3d6981'
+                        }
+                    }
+                }
+            ],
+            series: [
+                {
+                    name:'出货量',
+                    type:'bar',
+                    barWidth: '60%',
+                    data:[2.13,3.2,4.207,4.341,4.67,4.443,3.977]
+                },
+                {
+                    name:'增长率',
+                    type:'line',
+                    yAxisIndex: 1,
+                    itemStyle : {
+                        normal : {
+                            color:'#81b6b2',
+                            lineStyle:{
+                                color:'#81b6b2'
+                            }
+                        }
+                    },
+                    data:[135,50.2,31.5,2.50,7.60,-4.90,-10.5]
+                }
+            ]
+        };
+
+    myecharts_bar.setOption(options);*/
 }
 
 function drawLine(){
     myecharts_line=echarts.init(document.getElementById('myecharts_line'));
     var options = {
         title: {
-            text: '游戏市场规模增速',
+            text: '2017年中国前五智能手机厂商出货量及同比增幅',
             left: 'center',
             textStyle:{
                 color:'#fff'
             }
         },
+        grid: {
+            right: '12%'
+        },
         tooltip: {
-            trigger: 'axis'
+            trigger: 'axis',
+            axisPointer: {
+                type: 'cross',
+                label: {
+                    backgroundColor: '#6a7985'
+                },
+                crossStyle: {
+                    color: '#fff'
+                }
+            }
         },
         legend: {
             bottom:'6',
             textStyle:{
                 color:'#fff'
             },
-            data:['移动游戏市场','客户端游戏市场','网页游戏市场']
+            data:['出货量','同比增幅']
         },
-        grid: {
-            top:'50',
-            left: '3%',
-            right: '5%',
-            bottom: '35',
-            containLabel: true
-        },
-        xAxis: {
-            type: 'category',
-            boundaryGap: false,
-            axisLine:{
-                lineStyle:{
-                    color:'#fff',
-                    width:3
-                }
-            },
-            axisLabel:{
-                interval:'0',
-                textStyle:{
-                    color:'#fff'
-                }
-            },
-            data: [2008,2009,2010,2011,2012,2013,2014,2015,2016,2017]
-        },
-        yAxis: {
-            type: 'value',
-            axisLine:{
-                lineStyle:{
-                    color:'#fff',
-                    width:'1'
-                }
-            },
-            axisLabel:{
-                textStyle:{
-                    color:'#fff'
+        xAxis: [
+            {
+                axisLine:{
+                    lineStyle:{
+                        color:'#fff'
+                        //width:1
+                    }
                 },
-                formatter:'{value}%'
+                axisLabel:{
+                    interval:'0',
+                    textStyle:{
+                        color:'#fff'
+                    }
+                },
+                type: 'category',
+                data:  ['华为','OPPO','vivo','小米','苹果','其他'],
+                axisPointer: {
+                    type: 'shadow'
+                }
             }
-        },
+        ],
+        yAxis: [
+            {
+                type: 'value',
+                name: '出货量(百万)',
+                axisLine:{
+                    lineStyle:{
+                        color:'#fff'
+                        //width:1
+                    }
+                },
+                axisLabel:{
+                    interval:'0',
+                    textStyle:{
+                        color:'#fff'
+                    },
+                    formatter: '{value}'
+                },
+                splitLine:{
+                    lineStyle:{
+                        type:'dashed',
+                        color:'#3d6981'
+                    }
+                }
+            },
+            {
+                type: 'value',
+                name: '同比增幅',
+                //interval: 5,
+                axisLine:{
+                    lineStyle:{
+                        color:'#fff'
+                        //width:1
+                    }
+                },
+                axisLabel:{
+                    interval:'0',
+                    textStyle:{
+                        color:'#fff'
+                    },
+                    formatter: '{value}%'
+                },
+                splitLine:{
+                    lineStyle:{
+                        type:'dashed',
+                        color:'#3d6981'
+                    }
+                }
+            }
+        ],
         series: [
             {
-                name:'移动游戏市场',
-                type:'line',
-                stack: '总量1',
-                itemStyle:{
-                    normal:{
-                        color:'	#DC143C'
-                    }
-                },
-                data:[25,326.7,42,86.8,90.6,246.9,144.6,87.2,59.2,49.8]
+                name:'出货量',
+                type:'bar',
+                barWidth: '60%',
+                data:[90.9,80.5,68.6,55.1,41.1,108.1]
             },
             {
-                name:'客户端游戏市场',
+                name:'同比增幅',
                 type:'line',
-                stack: '总量2',
-                itemStyle:{
-                    normal:{
-                        color:'#4682B4'
+                yAxisIndex: 1,
+                itemStyle : {
+                    normal : {
+                        color:'#81b6b2',
+                        lineStyle:{
+                            color:'#81b6b2'
+                        }
                     }
                 },
-                data:[21.7,39.5,16.5,35.1,23.0,18.9,13.5,0.4,-4.8,13.7]
-            },
-            {
-                name:'网页游戏市场',
-                type:'line',
-                stack: '总量3',
-                itemStyle:{
-                    normal:{
-                        color:'#FFD700'
-                    }
-                },
-                data:[161.2,211.1,198.9,32.4,46.4,57.4,58.8,8.3,-14.8,-15.4]
+                data:[18.6,2.7,-0.8,32.6,-8.3,-31.0]
             }
         ]
     };
+
     myecharts_line.setOption(options);
 }
 
@@ -332,6 +517,100 @@ function drawBar2(){
     myecharts_bar2=echarts.init(document.getElementById('myecharts_bar2'));
     var options = {
         title: {
+            text: '2017年中国手机市场不同价格段关注比例走势',
+            x: 'center',
+            textStyle: {
+                color: '#fff'
+            }
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        legend: {
+            textStyle: {
+                color: '#fff'
+            },
+            top:'center',
+            right:'1%',
+            orient:'vertical',
+            data:['1000-2000元','1000元以下','3001-4000元','2001-3000元','4000元以上']
+        },
+        grid: {
+            left: '3%',
+            right: '25%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: {
+            axisLine:{
+                lineStyle:{
+                    color:'#fff'
+                    //width:1
+                }
+            },
+            axisLabel:{
+                interval:'0',
+                textStyle:{
+                    color:'#fff'
+                }
+            },
+            type: 'category',
+            boundaryGap: false,
+            data: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+        },
+        yAxis: {
+            type: 'value',
+            //interval: 5,
+            axisLine:{
+                show:false
+                /*lineStyle:{
+                    color:'#fff'
+                    //width:1
+                }*/
+            },
+            axisLabel:{
+                textStyle:{
+                    color:'#fff'
+                },
+                formatter: '{value}%'
+            },
+            splitLine:{
+                lineStyle:{
+                 type:'dashed',
+                 color:'#3d6981'
+                 }
+            }
+        },
+        series: [
+            {
+                name:'1000-2000元',
+                type:'line',
+                data:[37.07,37.00,35.77,37.02,37.05,36.94,38.56,38.43,35.05,33.84,34.43,35.49]
+            },
+            {
+                name:'1000元以下',
+                type:'line',
+                data:[30.51,29.91,28.66,29.30,27.32,26.87,28.97,29.78,26.65,27.87,25.54,24.96]
+            },
+            {
+                name:'3001-4000元',
+                type:'line',
+                data:[15.47,15.35,17.23,15.89,16.98,17.19,14.34,14.03,18.25,16.77,19.49,19.01]
+            },
+            {
+                name:'2001-3000元',
+                type:'line',
+                data:[10.75,10.81,10.88,11.09,11.77,12.10,12.04,11.69,12.06,13.25,13.01,12.61]
+            },
+            {
+                name:'4000元以上',
+                type:'line',
+                data:[6.20,6.43,7.45,7.40,7.35,7.33,6.13,6.35,7.41,8.38,7.84,7.93]
+            }
+        ]
+    };
+   /* {
+        title: {
             text: '2017年游戏上市公司的营收TOP10',
             left: 'center',
             textStyle:{
@@ -387,6 +666,7 @@ function drawBar2(){
                 },
                 splitLine:{
                     lineStyle:{
+                        type:'dashed',
                         color:'#3d6981'
                     }
                 }
@@ -401,7 +681,7 @@ function drawBar2(){
 
             }
         ]
-    };
+    };*/
 
 
 
@@ -413,7 +693,7 @@ function drawPie(){
     myecharts_pie=echarts.init(document.getElementById('myecharts_pie'));
     var options= {
         title : {
-            text: '游戏市场份额占比',
+            text: '2017年中国前五智能手机厂商市场份额',
             x: 'center',
             textStyle: {
                 color: '#fff'
@@ -421,7 +701,7 @@ function drawPie(){
         },
         tooltip : {
             trigger: 'item',
-            formatter: "{a} <br/>{b} : {c} ({d}%)"
+            formatter: "{a} <br/>{b} : {d}%"
         },
         legend: {
             bottom:'4%',
@@ -430,30 +710,40 @@ function drawPie(){
             textStyle: {
                 color: '#fff'
             },
-            data: ['腾讯','网易','其他']
+            data: ['华为','OPPO','vivo','小米','苹果','其他']
         },
         series : [
             {
                 name: '市场份额占比',
                 type: 'pie',
-                radius : '60%',
+                radius : '73%',
                 center: ['50%', '60%'],
                 label:{            //饼图图形上的文本标签
                     normal:{
                         show:true,
                         position:'inner', //标签的位置
                         textStyle : {
-                            fontWeight : 300 ,
-                            fontSize : 16    //文字的字体大小
+                            fontWeight : 100 ,
+                            fontSize : 14    //文字的字体大小
                         },
                         formatter:'{d}%'
 
                     }
                 },
                 data:[
-                    {value:47, name:'腾讯'},
-                    {value:26, name:'网易'},
-                    {value:27, name:'其他'}
+                    //2018年数据
+                    /*{value:26.4, name:'华为'},
+                    {value:19.8, name:'OPPO'},
+                    {value:19.1, name:'vivo'},
+                    {value:13.1, name:'小米'},
+                    {value:9.1, name:'苹果'},
+                    {value:12.5, name:'其他'}*/
+                    {value:20.4, name:'华为'},
+                    {value:18.1, name:'OPPO'},
+                    {value:15.4, name:'vivo'},
+                    {value:12.4, name:'小米'},
+                    {value:9.3, name:'苹果'},
+                    {value:24.3, name:'其他'}
                 ],
                 itemStyle: {
                     emphasis: {
@@ -470,93 +760,39 @@ function drawPie(){
 
 function drawGraph(){
     myecharts_graph=echarts.init(document.getElementById('myecharts_graph'));
-    var options = {
-        title: {
-            text: '游戏行业与其他的行业关系',
-            left: 'center',
-            textStyle:{
-                color:'#fff'
+    var options= {
+        title : {
+            text: '2017年中国手机市场品牌关注分布情况',
+            x:'center',
+            textStyle: {
+                color: '#fff'
             }
         },
-        //tooltip: {},
-        animation: false,
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} :{d}%"
+        },
+        calculable : true,
         series : [
             {
-                name: '游戏市场关系',
-                type: 'graph',
-                layout: 'force',
-                data: [
-                    {name:'游戏行业'},
-                    {name:'影视行业',itemStyle:{
-                        normal:{color:'#6495ED'}
-                    }},
-                    {name:'音乐行业',itemStyle:{
-                        normal:{color:'#6495ED'}
-                    }},
-                    {name:'媒体行业',itemStyle:{
-                        normal:{color:'#6495ED'}
-                    }},
-                    {name:'文学行业',itemStyle:{
-                        normal:{color:'#6495ED'}
-                    }},
-
-                    {name:'直播行业',itemStyle:{
-                        normal:{color:'#DAA520'}
-                    }},
-                    {name:'游戏周边行业',itemStyle:{
-                        normal:{color:'#DAA520'}
-                    }},
-                    {name:'电竞行业',itemStyle:{
-                        normal:{color:'#DAA520'}
-                    }},
-
-                    {name:'电源、CG',itemStyle:{
-                        normal:{color:'#87CEEB'}
-                    }},
-                    {name:'音乐专辑',itemStyle:{
-                        normal:{color:'#87CEEB'}
-                    }},
-                    {name:'游戏自媒体',itemStyle:{
-                        normal:{color:'#87CEEB'}
-                    }},
-                    {name:'游戏小说',itemStyle:{
-                        normal:{color:'#87CEEB'}
-                    }}
-
-            ],
-                links:[
-                    {source:'游戏行业',target:'影视行业'},
-                    {source:'游戏行业',target:'音乐行业'},
-                    {source:'游戏行业',target:'媒体行业'},
-                    {source:'游戏行业',target:'文学行业'},
-                    {source:'游戏行业',target:'直播行业'},
-                    {source:'游戏行业',target:'电竞行业'},
-                    {source:'游戏行业',target:'游戏周边行业'},
-                    {source:'影视行业',target:'电源、CG'},
-                    {source:'音乐行业',target:'音乐专辑'},
-                    {source:'媒体行业',target:'游戏自媒体'},
-                    {source:'文学行业',target:'游戏小说'}
-
-                ],
-
-                roam: true,
-                symbolSize:40,
-                //edgeSymbol:['none','arrow'],
-                label: {
-                    normal: {
-                        show:true,
-                        position: 'inside'
-                    }
-                },
-                lineStyle:{
-                    normal:{
-                        color:'green',
-                        width:'3'
-                    }
-                },
-                force: {
-                    repulsion: 300
-                }
+                name:'品牌关注',
+                type:'pie',
+                radius : [15, '70%'],
+                center: ['50%', '55%'],
+                roseType : 'area',//radius
+                data:[
+                    {value:12.44, name:'苹果'},
+                    {value:11.43, name:'三星'},
+                    {value:7.36, name:'荣耀'},
+                    {value:4.56, name:'魅族'},
+                    {value:3.7, name:'金立'},
+                    {value:1.64, name:'小米'},
+                    {value:1.79, name:'联想'},
+                    {value:18.45, name:'华为'},
+                    {value:13.61, name:'OPPO'},
+                    {value:12.98, name:'vivo'},
+                    {value:12.04, name:'其他'}
+                ]
             }
         ]
     };
