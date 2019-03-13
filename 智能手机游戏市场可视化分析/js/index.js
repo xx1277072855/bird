@@ -456,7 +456,7 @@ function drawMap(){
     myecharts_map=echarts.init(document.getElementById('myecharts_map'));
     var options= {
         title: {
-            text: '各省上市游戏公司分布',
+            text: '各省上市公司分布',
             left: 'center',
             textStyle:{
                 color:'#fff'
