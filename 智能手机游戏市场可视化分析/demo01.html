@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/echarts.js"></script>
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #myecharts_1{
+            position: absolute;
+            width: 100%;
+            height:100%;
+        }
+    </style>
+</head>
+<body>
+<div id="myecharts_1"></div>
+<script>
+    var xData = ['2008','2009','2010','2011','2012','2013','2014','2015','2016','2017','2018'];
+    var yData0 = [0.6,0.77,1.12,1.67,2.13,3.2,4.207,4.341,4.67,4.443,3.977];
+    var yData1 = [12,14.5,35,70,135,50.2,31.5,2.50,7.60,-4.90,-10.5];
+    var myecharts_1=echarts.init(document.getElementById('myecharts_1'));
+    var option = {
+        title: {
+            text: '国内历年手机市场出货量、增长率',
+            left: 'center',
+            textStyle:{
+                color:'#fff'
+            }
+        },
+        grid: {
+            right: '12%'
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'cross',
+                label: {
+                    backgroundColor: '#6a7985'
+                },
+                crossStyle: {
+                    color: '#fff'
+                }
+            }
+        },
+        /*legend: {
+            bottom:'6',
+            textStyle:{
+                color:'#fff'
+            },
+            data:['出货量','增长率']
+        },*/
+        xAxis: [
+            {
+               /* axisLine:{
+                    lineStyle:{
+                        color:'#fff'
+                        //width:1
+                    }
+                },
+                axisLabel:{
+                    interval:'0',
+                    textStyle:{
+                        color:'#fff'
+                    }
+                },*/
+                type: 'category',
+                boundaryGap: true,
+                data: (function () {
+                    var res = xData.slice(0,6);
+                    return res;
+                })(),
+                axisPointer: {
+                    type: 'shadow'
+                }
+            }
+        ],
+        yAxis: [
+            {
+                type: 'value',
+                name: '出货量(亿)',
+                /*axisLine:{
+                    lineStyle:{
+                        color:'#fff'
+                        //width:1
+                    }
+                },
+                axisLabel:{
+                    interval:'0',
+                    textStyle:{
+                        color:'#fff'
+                    },
+                    formatter: '{value}'
+                },
+                splitLine:{
+                    lineStyle:{
+                        type:'dashed',
+                        color:'#3d6981'
+                    }
+                }*/
+            },
+            {
+                type: 'value',
+                name: '增长率',
+                min: -20,
+                max: 150,
+                //interval: 5,
+                /*axisLine:{
+                    lineStyle:{
+                        color:'#fff'
+                        //width:1
+                    }
+                },
+                axisLabel:{
+                    interval:'0',
+                    textStyle:{
+                        color:'#fff'
+                    },
+                    formatter: '{value}%'
+                },
+                splitLine:{
+                    lineStyle:{
+                        type:'dashed',
+                        color:'#3d6981'
+                    }
+                }*/
+            }
+        ],
+        series: [
+            {
+            name: '出货量',
+            type: 'bar',
+            barWidth: '60%',
+            data: (function () {
+                var len = yData0.slice(0, 6);
+                return len;
+            })()
+            },
+            {
+                name:'增长率',
+                type:'line',
+                yAxisIndex: 1,
+                itemStyle : {
+                    normal : {
+                        color:'#81b6b2',
+                        lineStyle:{
+                            color:'#81b6b2'
+                        }
+                    }
+                },
+                data:(function () {
+                    var len = yData0.slice(0, 6);
+                    return len;
+                })()
+            }
+       ]
+    }/* {
+        title: {
+            text: '动态数据',
+            subtext: '纯属虚构'
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'cross',
+                label: {
+                    backgroundColor: '#283b56'
+                }
+            }
+        },
+        legend: {
+            data:['最新成交价', '预购队列']
+        },
+        dataZoom: {
+            show: false,
+            start: 0,
+            end: 100
+        },
+        xAxis: [
+            {
+                type: 'category',
+                boundaryGap: true,
+                data: (function (){
+                    /!*var now = new Date();
+                    var res = [];
+                    var len = 10;
+                    while (len--) {
+                        res.unshift(now.toLocaleTimeString().replace(/^\D*!/,''));
+                        now = new Date(now - 2000);
+                    }
+                    return res;*!/
+                    var res = xData.slice(0,6);
+                    return res;
+                })()
+            },
+            {
+                type: 'category',
+                boundaryGap: true,
+                data: (function (){
+                    var res = [];
+                    var len = 10;
+                    while (len--) {
+                        res.push(10 - len - 1);
+                    }
+                    return res;
+                })()
+            }
+        ],
+        yAxis: [
+            {
+                type: 'value',
+                scale: true,
+                name: '价格',
+                max: 30,
+                min: 0,
+                boundaryGap: [0.2, 0.2]
+            },
+            {
+                type: 'value',
+                scale: true,
+                name: '预购量',
+                max: 1200,
+                min: 0,
+                boundaryGap: [0.2, 0.2]
+            }
+        ],
+        series: [
+            {
+                name:'预购队列',
+                type:'bar',
+                xAxisIndex: 1,
+                yAxisIndex: 1,
+                data:(function (){
+                    var res = [];
+                    var len = 10;
+                    while (len--) {
+                        res.push(Math.round(Math.random() * 1000));
+                    }
+                    return res;
+                })()
+            },
+            {
+                name:'最新成交价',
+                type:'line',
+                data:(function (){
+                    var res = [];
+                    var len = 0;
+                    while (len < 10) {
+                        res.push((Math.random()*10 + 5).toFixed(1) - 0);
+                        len++;
+                    }
+                    return res;
+                })()
+            }
+        ]
+    }*/;
+
+     /*var app = 11;
+    setInterval(function (){
+        axisData = (new Date()).toLocaleTimeString().replace(/^\D*!/,'');
+
+        var data0 = option.series[0].data;
+        var data1 = option.series[1].data;
+        data0.shift();
+        data0.push(Math.round(Math.random() * 1000));
+        data1.shift();
+        data1.push((Math.random() * 10 + 5).toFixed(1) - 0);
+
+        option.xAxis[0].data.shift();
+        option.xAxis[0].data.push(axisData);
+        option.xAxis[1].data.shift();
+        option.xAxis[1].data.push(app++);
+
+        myecharts_1.setOption(option);
+    }, 2000);*/
+    myecharts_1.setOption(option);
+    var n =6;
+    setInterval(function () {
+        axisDataX = xData[n];
+        axisDataY0 = yData0[n];
+        axisDataY1 = yData1[n];
+        var data0 = option.series[0].data,
+                data1 = option.series[1].data;
+        data0.shift();
+        data0.push(axisDataY0);
+        data1.shift();
+        data1.push(axisDataY1);
+        option.xAxis[0].data.shift();
+        option.xAxis[0].data.push(axisDataX);
+        myecharts_1.setOption(option);
+        n++;
+        if(n==11){
+            n=0;
+        }
+    },2000)
+</script>
+</body>
+</html>

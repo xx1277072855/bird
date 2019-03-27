@@ -1,5 +1,5 @@
 /**
- * Created by 徐享 on 
+ * Created by 徐享 on
  */
 
 setInterval(function(){
@@ -18,27 +18,25 @@ function show_num(n){
 }
 
 
-
-
-var myecharts_bar,myecharts_line,myecharts_map,myecharts_bar2,myecharts_pie,myecharts_graph;
+var myecharts_barline1,myecharts_barline2,myecharts_map,myecharts_line,myecharts_pie1,myecharts_pie2;
 
 
 $(function () {
-    drawBar();
-    drawLine();
+    drawBarLine1();
+    drawBarLine2();
     drawMap();
-    drawBar2();
-    drawPie();
-    drawGraph();
+    drawLine();
+    drawPie1();
+    drawPie2();
 });
 
-
-function drawBar(){
+//动态柱线混合图
+function drawBarLine1(){
     //第一个图的数据
     var xData = ['2008','2009','2010','2011','2012','2013','2014','2015','2016','2017','2018'];
     var yData0 = [0.6,0.77,1.12,1.67,2.13,3.2,4.207,4.341,4.67,4.443,3.977];
     var yData1 = [12,14.5,35,70,135,50.2,31.5,2.50,7.60,-4.90,-10.5];
-    myecharts_bar=echarts.init(document.getElementById('myecharts_bar'));
+    myecharts_barline1=echarts.init(document.getElementById('myecharts_barline1'));
     var options =
     {
         title: {
@@ -175,7 +173,7 @@ function drawBar(){
             }
         ]
     };
-    myecharts_bar.setOption(options);
+    myecharts_barline1.setOption(options);
     var n =6;
     setInterval(function () {
         axisDataX = xData[n];
@@ -189,142 +187,16 @@ function drawBar(){
         data1.push(axisDataY1);
         options.xAxis[0].data.shift();
         options.xAxis[0].data.push(axisDataX);
-        myecharts_bar.setOption(options);
+        myecharts_barline1.setOption(options);
         n++;
         if(n==11){
             n=0;
         }
-    },2000)/*{
-            title: {
-                text: '国内历年手机市场出货量、增长率',
-                left: 'center',
-                textStyle:{
-                    color:'#fff'
-                }
-            },
-            grid: {
-                right: '12%'
-            },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'cross',
-                    label: {
-                        backgroundColor: '#6a7985'
-                    },
-                    crossStyle: {
-                        color: '#fff'
-                    }
-                }
-            },
-            legend: {
-                bottom:'6',
-                textStyle:{
-                    color:'#fff'
-                },
-                data:['出货量','增长率']
-            },
-            xAxis: [
-                {
-                    axisLine:{
-                        lineStyle:{
-                            color:'#fff'
-                            //width:1
-                        }
-                    },
-                    axisLabel:{
-                        interval:'0',
-                        textStyle:{
-                            color:'#fff'
-                        }
-                    },
-                    type: 'category',
-                    data: ['2012','2013','2014','2015','2016','2017','2018'],
-                    axisPointer: {
-                        type: 'shadow'
-                    }
-                }
-            ],
-            yAxis: [
-                {
-                    type: 'value',
-                    name: '出货量(亿)',
-                    axisLine:{
-                        lineStyle:{
-                            color:'#fff'
-                            //width:1
-                        }
-                    },
-                    axisLabel:{
-                        interval:'0',
-                        textStyle:{
-                            color:'#fff'
-                        },
-                        formatter: '{value}'
-                    },
-                    splitLine:{
-                        lineStyle:{
-                            type:'dashed',
-                            color:'#3d6981'
-                        }
-                    }
-                },
-                {
-                    type: 'value',
-                    name: '增长率',
-                    min: -20,
-                    max: 150,
-                    //interval: 5,
-                    axisLine:{
-                        lineStyle:{
-                            color:'#fff'
-                            //width:1
-                        }
-                    },
-                    axisLabel:{
-                        interval:'0',
-                        textStyle:{
-                            color:'#fff'
-                        },
-                        formatter: '{value}%'
-                    },
-                    splitLine:{
-                        lineStyle:{
-                            type:'dashed',
-                            color:'#3d6981'
-                        }
-                    }
-                }
-            ],
-            series: [
-                {
-                    name:'出货量',
-                    type:'bar',
-                    barWidth: '60%',
-                    data:[2.13,3.2,4.207,4.341,4.67,4.443,3.977]
-                },
-                {
-                    name:'增长率',
-                    type:'line',
-                    yAxisIndex: 1,
-                    itemStyle : {
-                        normal : {
-                            color:'#81b6b2',
-                            lineStyle:{
-                                color:'#81b6b2'
-                            }
-                        }
-                    },
-                    data:[135,50.2,31.5,2.50,7.60,-4.90,-10.5]
-                }
-            ]
-        };
-
-    myecharts_bar.setOption(options);*/
+    },2000);
 }
 
-function drawLine(){
-    myecharts_line=echarts.init(document.getElementById('myecharts_line'));
+function drawBarLine2(){
+    myecharts_barline2=echarts.init(document.getElementById('myecharts_barline2'));
     var options = {
         title: {
             text: '2017年中国前五智能手机厂商出货量及同比增幅',
@@ -449,7 +321,7 @@ function drawLine(){
         ]
     };
 
-    myecharts_line.setOption(options);
+    myecharts_barline2.setOption(options);
 }
 
 function drawMap(){
@@ -472,7 +344,7 @@ function drawMap(){
             max: 80,
             maxOpen:true,
             text: ['高','低'],
-            color:['#0000FF','#DCDCDC'],
+            color:['#ca1a10','#dccb56'],
             calculable: true
 
         },
@@ -513,8 +385,8 @@ function drawMap(){
     myecharts_map.setOption(options);
 }
 
-function drawBar2(){
-    myecharts_bar2=echarts.init(document.getElementById('myecharts_bar2'));
+function drawLine(){
+    myecharts_line=echarts.init(document.getElementById('myecharts_line'));
     var options = {
         title: {
             text: '2017年中国手机市场不同价格段关注比例走势',
@@ -609,88 +481,11 @@ function drawBar2(){
             }
         ]
     };
-   /* {
-        title: {
-            text: '2017年游戏上市公司的营收TOP10',
-            left: 'center',
-            textStyle:{
-                color:'#fff'
-            }
-        },
-        tooltip : {
-            trigger: 'axis',
-            axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-                type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-            }
-        },
-        grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-        },
-        xAxis : [
-            {
-                type : 'category',
-                data : ['腾讯', '网易', '三七娱乐', '完美世界', '智明星通', 'IGG', '昆仑万维','游族','恺英','金山'],
-                axisLabel:{
-                    interval:0,
-                    show:true,
-                    textStyle:{
-                        color:'#fff'
-                    }
-                },
-                axisLine:{
-                    lineStyle:{
-                        color:'#fff'
-                    }
-                },
-                axisTick: {
-                    alignWithLabel: true
-                }
-            }
-        ],
-        yAxis : [
-            {
-                type : 'value',
-                axisLabel:{
-                    show:true,
-                    textStyle:{
-                        color:'#fff'
-                    }
-                },
-                axisLine:{
-                    lineStyle:{
-                        color:'#fff'
-                    }
-                },
-                splitLine:{
-                    lineStyle:{
-                        type:'dashed',
-                        color:'#3d6981'
-                    }
-                }
-            }
-        ],
-        series : [
-            {
-                name:'公司营收（亿元）',
-                type:'bar',
-                barWidth: '60%',
-                data: [978.83, 362.82, 61.92, 56.5, 39.79, 38.39, 34.36,32.42,31.34,31.2]
-
-            }
-        ]
-    };*/
-
-
-
-
-    myecharts_bar2.setOption(options);
+    myecharts_line.setOption(options);
 }
 
-function drawPie(){
-    myecharts_pie=echarts.init(document.getElementById('myecharts_pie'));
+function drawPie1(){
+    myecharts_pie1=echarts.init(document.getElementById('myecharts_pie1'));
     var options= {
         title : {
             text: '2017年中国前五智能手机厂商市场份额',
@@ -738,6 +533,7 @@ function drawPie(){
                     {value:13.1, name:'小米'},
                     {value:9.1, name:'苹果'},
                     {value:12.5, name:'其他'}*/
+                    //2017年数据
                     {value:20.4, name:'华为'},
                     {value:18.1, name:'OPPO'},
                     {value:15.4, name:'vivo'},
@@ -755,11 +551,11 @@ function drawPie(){
             }
         ]
     };
-    myecharts_pie.setOption(options);
+    myecharts_pie1.setOption(options);
 }
 
-function drawGraph(){
-    myecharts_graph=echarts.init(document.getElementById('myecharts_graph'));
+function drawPie2(){
+    myecharts_pie2=echarts.init(document.getElementById('myecharts_pie2'));
     var options= {
         title : {
             text: '2017年中国手机市场品牌关注分布情况',
@@ -796,15 +592,15 @@ function drawGraph(){
             }
         ]
     };
-    myecharts_graph.setOption(options);
+    myecharts_pie2.setOption(options);
 }
 
 $(window).resize(function () {
     //当浏览器大小变化时,刷新echarts中的页面
-    myecharts_bar.resize();
-    myecharts_line.resize();
+    myecharts_barline1.resize();
+    myecharts_barline2.resize();
     myecharts_map.resize();
-    myecharts_bar2.resize();
-    myecharts_pie.resize();
-    myecharts_graph.resize();
+    myecharts_line.resize();
+    myecharts_pie1.resize();
+    myecharts_pie2.resize();
 });
