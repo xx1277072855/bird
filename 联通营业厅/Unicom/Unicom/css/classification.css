@@ -1,0 +1,67 @@
+.main .tab {
+  position: fixed;
+  left: 0;
+  width: 1.8rem;
+  border-right: 1px solid #eee;
+}
+
+.main .tab>li {
+  font-family: 'PingFang-SC-Bold';
+  font-size: .26rem;
+  height: .68rem;
+  line-height: .68rem;
+  text-align: center;
+  margin: .3rem 0;
+  color: #2d2d2d;
+}
+
+.main .tab>li.selected {
+  border-radius: 5px;
+  color: #fff;
+  background: linear-gradient(to right, #ff903f, #ff6904);
+}
+
+.main .content {
+  position: absolute;
+  left: 1.8rem;
+  display: none;
+}
+
+.main .content.selected {
+  display: block;
+}
+
+.main .content>ul {
+  margin: 0 .18rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.main .content>ul>li {
+  width: 1.77rem;
+  margin-top: .7rem;
+  text-align: center;
+}
+
+.main .content>ul>li>img {
+  width: .86rem;
+  height: .86rem;
+}
+
+.main .content>ul>li>p {
+  font-family: 'PingFang-SC-Medium';
+  font-size: .22rem;
+  margin-top: .12rem;
+  color: #333;
+}
+
+.main .btn {
+  background: url('../images/fl_order_popup@2x.png');
+  position: fixed;
+  right: .2rem;
+  top: 8.2rem;
+  width: 1.14rem;
+  height: 1.01rem;
+  background-size: 100% 100%;
+}

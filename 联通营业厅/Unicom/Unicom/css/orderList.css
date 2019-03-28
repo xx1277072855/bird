@@ -1,0 +1,84 @@
+.main {
+  padding: 0 .3rem;
+}
+
+.main .tab {
+  font-family: 'PingFang-SC-Medium';
+  display: flex;
+  justify-content: space-between;
+  font-size: .3rem;
+  color: #333;
+  height: 1.03rem;
+  line-height: 1.03rem;
+}
+
+.main .tab li {
+  width: 1rem;
+  text-align: center;
+}
+
+.main .tab li.selected {
+  width: 1rem;
+  color: #ff6b00;
+  border-bottom: .08rem solid #ff6b00;
+}
+
+.main .content {
+  display: none;
+}
+
+.main .content .goods>li {
+  padding: .48rem 0 .3rem 0;
+  border-top: 1px solid #eee;
+}
+
+.main .content .goods>li .good {
+  display: flex;
+}
+
+.main .content .goods>li .good img {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: .3rem;
+}
+
+.main .content .goods>li .good .info {
+  position: relative;
+}
+
+.main .content .goods>li .good .info img {
+  position: absolute;
+  top: .45rem;
+  right: 0;
+  width: 1.12rem;
+  height: 1.12rem;
+}
+
+.main .content .goods>li .good .info>p {
+  color: rgb(159, 158, 158);
+  font-size: .22rem;
+  line-height: .32rem;
+  margin-top: .05rem;
+}
+
+.main .content .goods>li .good .info>p:nth-child(1) {
+  color: #333;
+  font-size: .3rem;
+  line-height: .45rem;
+  margin-top: -.1rem;
+}
+
+.main .content.selected {
+  display: block;
+}
+
+.main .content .goods>li .price {
+  text-align: right;
+  font-size: .3rem;
+  margin-top: .36rem;
+}
+
+.main .content .goods>li .price span {
+  font-size: .36rem;
+  color: #ff6b00;
+}

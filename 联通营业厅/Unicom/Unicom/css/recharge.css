@@ -1,0 +1,143 @@
+.main {
+  padding: 0 .3rem;
+}
+
+.main .account {
+  margin: .4rem 0 .3rem 0;
+}
+
+.main .account .name {
+  font-family: 'PingFang-SC-Medium';
+  font-size: .26rem;
+  color: rgb(51, 51, 51);
+}
+
+.main .account .info {
+  font-family: 'PingFang-SC-Regular';
+  font-size: .22rem;
+  color: rgb(159, 158, 158);
+  margin-left: .2rem;
+}
+
+.main .input {
+  position: relative;
+}
+
+.main .input input {
+  font-family: 'PingFang-SC-Medium';
+  border: none;
+  outline: none;
+  width: 100%;
+  height: .9rem;
+  line-height: .9rem;
+  padding: 0 .3rem;
+  box-sizing: border-box;
+  color: rgb(159, 158, 158);
+  background: #e5e5e5;
+  font-size: .4rem;
+  border-radius: .1rem;
+  margin-bottom: 1.3rem;
+}
+
+.main .input input:focus {
+  font-family: 'Arial';
+  color: #333;
+}
+
+.main .input input.focus {
+  font-family: 'Arial';
+  color: #333;
+}
+
+.main .input .img {
+  display: none;
+  position: absolute;
+  top: .3rem;
+  right: .3rem;
+  width: .3rem;
+  height: .3rem;
+}
+
+.main .input .error {
+  display: none;
+  position: absolute;
+  top: 1.1rem;
+  font-size: .22rem;
+  color: rgb(159, 158, 158);
+}
+
+.main .input .error span {
+  display: inline-block;
+  width: .11rem;
+  height: .11rem;
+  border-radius: 50%;
+  margin-right: .2rem;
+  background: #ff6600;
+  vertical-align: middle;
+}
+
+.hasTel {
+  font-family: 'Arial' !important;
+  color: #333 !important;
+}
+
+.main .cards {
+  display: flex;
+  flex-direction: row;
+}
+
+.main .cards>div {
+  box-sizing: border-box;
+  text-align: center;
+  width: 2.1rem;
+  border: 1px solid #eee;
+  border-radius: .1rem;
+  margin-right: .3rem;
+  padding: .44rem 0;
+}
+
+.main .cards>div:nth-child(3n) {
+  margin-right: 0;
+}
+
+.main .cards .card .time {
+  font-family: 'PingFang-SC-Bold';
+  font-size: .36rem;
+  color: #333;
+}
+
+.main .cards .card .price {
+  font-family: 'PingFang-SC-Regular';
+  font-size: .24rem;
+  color: #898989;
+  margin-top: .16rem;
+}
+
+.main .cards .card.active {
+  background: #fff6f1;
+  border: 1px solid #ff6600;
+}
+
+.main .cards .card.active .time,
+.main .cards .card.active .price {
+  color: #ff6600;
+}
+
+.main .btn {
+  font-family: 'PingFang-SC-Bold';
+  width: 100%;
+  height: .82rem;
+  line-height: .82rem;
+  color: #fff;
+  background: #9F9E9E;
+  font-size: .36rem;
+  border-radius: .1rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.main .btn.active {
+  color: #fff;
+  background: linear-gradient(to right, #ff903f, #ff6904);
+}
+

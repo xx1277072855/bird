@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>订单详情</title>
+  <script src="../js/rem.js"></script>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/orderList.css">
+</head>
+
+<body>
+  <div class="main">
+    <ul class="tab">
+      <li class="selected">全部</li>
+      <li>已完成</li>
+      <li>未支付</li>
+      <li>已失败</li>
+    </ul>
+    <div class="content selected">
+      <ul class="goods">
+        <li>
+          <div class="good">
+            <img src="../images/order_qqmusic_img@2x.png" />
+            <div class="info">
+              <p>QQ音乐付费音乐包会员（季卡）QQ音乐季卡大促销</p>
+              <p>充值账号: 180853153548</p>
+              <p>支付方式: 微信支付</p>
+              <img src="../images/succeed_img1@2x.png" />
+            </div>
+          </div>
+          <div class="price">小计：<span>39.8 元</span></div>
+        </li>
+        <li>
+          <div class="good">
+            <img src="../images/order_hjvip_img@2x.png" />
+            <div class="info">
+              <p>黑胶 VIP （月卡）黑胶音乐月卡大促销</p>
+              <p>充值账号: 180853153548</p>
+              <p>支付方式: 微信支付</p>
+              <img src="../images/succeed_img2@2x.png" />
+            </div>
+          </div>
+          <div class="price">小计：<span>39.8 元</span></div>
+        </li>
+        <li>
+          <div class="good">
+            <img src="../images/order_hjyk_img@2x.png" />
+            <div class="info">
+              <p>黑胶 VIP （月卡）黑胶音乐月卡大促销</p>
+              <p>充值账号: 180853153548</p>
+              <p>支付方式: 微信支付</p>
+              <img src="../images/succeed_img3@2x.png" />
+            </div>
+          </div>
+          <div class="price">小计：<span>39.8 元</span></div>
+        </li>
+      </ul>
+    </div>
+    <div class="content">
+      <ul class="goods">
+        <li>
+          <div class="good">
+            <img src="../images/order_qqmusic_img@2x.png" />
+            <div class="info">
+              <p>QQ音乐付费音乐包会员（季卡）QQ音乐季卡大促销</p>
+              <p>充值账号: 180853153548</p>
+              <p>支付方式: 微信支付</p>
+              <img src="../images/succeed_img1@2x.png" />
+            </div>
+          </div>
+          <div class="price">小计：<span>39.8 元</span></div>
+        </li>
+      </ul>
+    </div>
+    <div class="content">
+      <ul class="goods">
+        <li>
+          <div class="good">
+            <img src="../images/order_hjvip_img@2x.png" />
+            <div class="info">
+              <p>黑胶 VIP （月卡）黑胶音乐月卡大促销</p>
+              <p>充值账号: 180853153548</p>
+              <p>支付方式: 微信支付</p>
+              <img src="../images/succeed_img2@2x.png" />
+            </div>
+          </div>
+          <div class="price">小计：<span>39.8 元</span></div>
+        </li>
+      </ul>
+    </div>
+    <div class="content">
+      <ul class="goods">
+        <li>
+          <div class="good">
+            <img src="../images/order_hjyk_img@2x.png" />
+            <div class="info">
+              <p>黑胶 VIP （月卡）黑胶音乐月卡大促销</p>
+              <p>充值账号: 180853153548</p>
+              <p>支付方式: 微信支付</p>
+              <img src="../images/succeed_img3@2x.png" />
+            </div>
+          </div>
+          <div class="price">小计：<span>39.8 元</span></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $(".tab li").click(function () {
+      $(".tab li").eq($(this).index()).addClass("selected").siblings().removeClass('selected')
+      $(".content").eq($(".tab li").index(this)).addClass("selected").siblings().removeClass('selected')
+    })
+  })
+</script>
+
+</html>

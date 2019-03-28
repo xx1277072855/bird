@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>购买成功</title>
+  <script src="../js/rem.js"></script>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/success.css">
+</head>
+
+<body>
+  <div class="main">
+    <div class="top">
+      <img src="../images/succeed_img@2x.png" />
+    </div>
+    <div class="vip">黑胶VIP会员开通成功</div>
+    <ul class="business">
+      <li>交易单号<a href="#">107615541265848954</a></li>
+      <li>交易方式<a href="#">微信支付</a></li>
+      <li>交易时间<a href="#">2018-11-29 10:15:17</a></li>
+    </ul>
+    <div class="btn">返回首页</div>
+    <div class="order">订单查询</div>
+  </div>
+</body>
+
+<script src="../js/jquery.min.js"></script>
+<script>
+  $('.main .btn').on('click', function () {
+    window.location.href = 'classification.html'
+  })
+  $('.main .order').on('click', function () {
+    window.location.href = 'orderList.html'
+  })
+</script>
+
+</html>

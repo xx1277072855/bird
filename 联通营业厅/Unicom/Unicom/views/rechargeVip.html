@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>充值</title>
+  <script src="../js/rem.js"></script>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/recharge.css">
+</head>
+
+<body>
+  <div class="main">
+    <div class="account">
+      <p class="name">黑胶VIP账号<span class="info">(仅支持手机号开通会员，请正确填写)</span></p>
+    </div>
+    <div class="input">
+      <input type="text" id="category" placeholder="请输入账号">
+      <img class="img" src="../images/delete@2x.png" alt="">
+      <p class="error"><span></span><i>手机号格式错误</i></p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <p class="time">周卡</p>
+        <p class="price">优惠价<span>19</span>&nbsp;元</p>
+      </div>
+      <div class="card active">
+        <p class="time">月卡</p>
+        <p class="price">优惠价<span>55.1</span>&nbsp;元</p>
+      </div>
+      <div class="card">
+        <p class="time">季卡</p>
+        <p class="price">优惠价<span>55.1</span>&nbsp;元</p>
+      </div>
+    </div>
+    <div class="btn">立即充值</div>
+  </div>
+
+</body>
+
+<script src="../js/jquery.min.js"></script>
+<script>
+  $(".input input").on('input', function () {
+    var value = $(".input input").val().trim()
+    if (value) {
+      $(".input .img").css("display", "block")
+      $(".main .btn").removeClass("active")
+    }
+  })
+
+  $(".input input").on('blur', function () {
+    var value = $(".input input").val()
+    setTimeout(function () {
+      if (value) {
+        $(".input input").addClass("hasTel")
+        if (/^1[345789]\d{9}$/.test(value)) {
+          $(".input .error").css("display", "none")
+          $(".main .btn").addClass("active")
+        } else {
+          $(".input .error").css("display", "block")
+          $(".main .btn").removeClass("active")
+          return false;
+        }
+      }
+    }, 300)
+  })
+
+  $(".input .img").on('click', function () {
+    $(".input input").val('')
+    $(".input .img").css("display", "none")
+    $(".main .btn").removeClass("active")
+  })
+
+  $(".cards .card").click(function () {
+    $(".cards .card").eq($(this).index()).addClass("active").siblings().removeClass('active')
+  })
+</script>
+
+</html>
