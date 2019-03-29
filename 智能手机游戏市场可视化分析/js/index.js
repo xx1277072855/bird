@@ -21,6 +21,111 @@ function show_num(n){
 var myecharts_barline1,myecharts_barline2,myecharts_map,myecharts_line,myecharts_pie1,myecharts_pie2;
 
 
+/*定义数据*/
+//第二个柱线混合图数据
+var dataBL2 = [
+    {
+        year:2017,
+        data:[
+            ['华为','OPPO','vivo','小米','苹果','其他'],
+            [90.9,80.5,68.6,55.1,41.1,108.1],
+            [18.6,2.7,-0.8,32.6,-8.3,-31.0]
+        ]
+    },
+    {
+        year:2018,
+        data:[
+            ['华为','OPPO','vivo','小米','苹果','其他'],
+            [105,78.9,76,52,36.3,49.5],
+            [15.5,-2,10.8,-5.6,-11.7,-54.2]
+        ]
+    }
+];
+//多折现图的数据；
+var dataLine = [
+    {
+        year:2017,
+        data:[
+            [30.51,29.91,28.66,29.30,27.32,26.87,28.97,29.78,26.65,27.87,25.54,24.96],
+            [37.07,37.00,35.77,37.02,37.05,36.94,38.56,38.43,35.05,33.84,34.43,35.49],
+            [10.75,10.81,10.88,11.09,11.77,12.10,12.04,11.69,12.06,13.25,13.01,12.61],
+            [15.47,15.35,17.23,15.89,16.98,17.19,14.34,14.03,18.25,16.77,19.49,19.01],
+            [6.20,6.43,7.45,7.40,7.35,7.33,6.13,6.35,7.41,8.38,7.84,7.93]
+        ]
+    },
+    {
+        year:2018,
+        data:[
+            [29.51,28.41,28.26,27.30,25.32,27.27,28.57,29.98,27.53,27.97,25.94,24.96],
+            [34.07,35.00,35.07,36.02,36.85,36.94,37.56,38.43,34.45,32.72,34.13,34.49],
+            [16.75,16.81,17.58,14.09,14.70,14.17,13.40,11.81,14.36,14.25,15.01,15.61],
+            [14.47,14.35,15.23,16.19,16.98,16.29,14.34,14.03,16.25,16.25,17.49,18.01],
+            [5.20,5.43,5.75,6.40,6.15,5.33,6.13,5.75,7.41,8.08,7.43,6.93]
+        ]
+    }
+]
+//第一个饼图的数据
+var dataPie1 = [
+    {
+        year:2017,
+        data:[
+            {value:20.4, name:'华为'},
+            {value:18.1, name:'OPPO'},
+            {value:15.4, name:'vivo'},
+            {value:12.4, name:'小米'},
+            {value:9.3, name:'苹果'},
+            {value:24.3, name:'其他'}
+        ]
+    },
+    {
+        year:2018,
+        data:[
+            {value:26.4, name:'华为'},
+            {value:19.8, name:'OPPO'},
+            {value:19.1, name:'vivo'},
+            {value:13.1, name:'小米'},
+            {value:9.1, name:'苹果'},
+            {value:12.5, name:'其他'}
+        ]
+    }
+];
+//第二个饼图数据
+var dataPie2 = [
+    {
+        year:2017,
+        data:[
+            {value:12.44, name:'苹果'},
+            {value:11.43, name:'三星'},
+            {value:7.36, name:'荣耀'},
+            {value:4.56, name:'魅族'},
+            {value:3.7, name:'金立'},
+            {value:1.64, name:'小米'},
+            {value:1.79, name:'联想'},
+            {value:18.45, name:'华为'},
+            {value:13.61, name:'OPPO'},
+            {value:12.98, name:'vivo'},
+            {value:12.04, name:'其他'}
+        ]
+    },
+    {
+        year:2018,
+        data:[
+            {value:15.63, name:'华为'},
+            {value:15.53, name:'OPPO'},
+            {value:15.49, name:'vivo'},
+            {value:15.01, name:'荣耀'},
+            {value:10.64, name:'三星'},
+            {value:8.97, name:'苹果'},
+            {value:4.22, name:'一加'},
+            {value:3.57, name:'小米'},
+            {value:2.78, name:'魅族'},
+            {value:1.48, name:'努比亚'},
+            {value:6.68, name:'其他'}
+        ]
+    }
+]
+
+
 $(function () {
     drawBarLine1();
     drawBarLine2();
@@ -320,8 +425,18 @@ function drawBarLine2(){
             }
         ]
     };
-
     myecharts_barline2.setOption(options);
+    $("header select").on("change",function () {
+        for(var el of dataBL2){
+            if($(this).children('option:selected').val() == el.year){
+                options.title.text = el.year+'年中国前五智能手机厂商出货量及同比增幅';
+                options.xAxis[0].data = el.data[0];
+                options.series[0].data = el.data[1];
+                options.series[1].data = el.data[2];
+                myecharts_barline2.setOption(options);
+            }
+        }
+    });
 }
 
 function drawMap(){
@@ -405,7 +520,7 @@ function drawLine(){
             top:'center',
             right:'1%',
             orient:'vertical',
-            data:['1000-2000元','1000元以下','3001-4000元','2001-3000元','4000元以上']
+            data:['1000元以下','1000-2000元','2001-3000元','3001-4000元','4000元以上']
         },
         grid: {
             left: '3%',
@@ -455,24 +570,24 @@ function drawLine(){
         },
         series: [
             {
-                name:'1000-2000元',
-                type:'line',
-                data:[37.07,37.00,35.77,37.02,37.05,36.94,38.56,38.43,35.05,33.84,34.43,35.49]
-            },
-            {
                 name:'1000元以下',
                 type:'line',
                 data:[30.51,29.91,28.66,29.30,27.32,26.87,28.97,29.78,26.65,27.87,25.54,24.96]
             },
             {
-                name:'3001-4000元',
+                name:'1000-2000元',
                 type:'line',
-                data:[15.47,15.35,17.23,15.89,16.98,17.19,14.34,14.03,18.25,16.77,19.49,19.01]
+                data:[37.07,37.00,35.77,37.02,37.05,36.94,38.56,38.43,35.05,33.84,34.43,35.49]
             },
             {
                 name:'2001-3000元',
                 type:'line',
                 data:[10.75,10.81,10.88,11.09,11.77,12.10,12.04,11.69,12.06,13.25,13.01,12.61]
+            },
+            {
+                name:'3001-4000元',
+                type:'line',
+                data:[15.47,15.35,17.23,15.89,16.98,17.19,14.34,14.03,18.25,16.77,19.49,19.01]
             },
             {
                 name:'4000元以上',
@@ -482,6 +597,19 @@ function drawLine(){
         ]
     };
     myecharts_line.setOption(options);
+    $("header select").on("change",function () {
+        for(var el of dataLine){
+            if($(this).children('option:selected').val() == el.year){
+                options.title.text = el.year+'年中国手机市场不同价格段关注比例走势';
+                options.series[0].data = el.data[0];
+                options.series[1].data = el.data[1];
+                options.series[2].data = el.data[2];
+                options.series[3].data = el.data[3];
+                options.series[4].data = el.data[4];
+                myecharts_line.setOption(options);
+            }
+        }
+    });
 }
 
 function drawPie1(){
@@ -526,13 +654,6 @@ function drawPie1(){
                     }
                 },
                 data:[
-                    //2018年数据
-                    /*{value:26.4, name:'华为'},
-                    {value:19.8, name:'OPPO'},
-                    {value:19.1, name:'vivo'},
-                    {value:13.1, name:'小米'},
-                    {value:9.1, name:'苹果'},
-                    {value:12.5, name:'其他'}*/
                     //2017年数据
                     {value:20.4, name:'华为'},
                     {value:18.1, name:'OPPO'},
@@ -540,6 +661,7 @@ function drawPie1(){
                     {value:12.4, name:'小米'},
                     {value:9.3, name:'苹果'},
                     {value:24.3, name:'其他'}
+
                 ],
                 itemStyle: {
                     emphasis: {
@@ -552,6 +674,23 @@ function drawPie1(){
         ]
     };
     myecharts_pie1.setOption(options);
+    //实现点击年份，实现页面的数据的更换
+    $("header select").on("change",function () {
+        var arr=[];
+        // console.log($(this).children('option:selected').val());
+        for(var el of dataPie1){
+            if($(this).children('option:selected').val() == el.year){
+                options.title.text = el.year+'年中国前五智能手机厂商市场份额';
+                options.series[0].data = el.data;
+                for (var ele of el.data){
+                    arr.push(ele.name);
+                }
+                // console.log(options.legend.data = arr);
+                options.legend.data = arr;
+                myecharts_pie1.setOption(options);
+            }
+        }
+    });
 }
 
 function drawPie2(){
@@ -593,9 +732,21 @@ function drawPie2(){
         ]
     };
     myecharts_pie2.setOption(options);
+    $("header select").on("change",function () {
+        var arr=[];
+        // console.log($(this).children('option:selected').val());
+        for(var el of dataPie2){
+            if($(this).children('option:selected').val() == el.year){
+                options.title.text = el.year+'年中国前五智能手机厂商市场份额';
+                options.series[0].data = el.data;
+                myecharts_pie2.setOption(options);
+            }
+        }
+    });
 }
 
-$(window).resize(function () {
+
+window.addEventListener('resize',function () {
     //当浏览器大小变化时,刷新echarts中的页面
     myecharts_barline1.resize();
     myecharts_barline2.resize();
@@ -604,3 +755,4 @@ $(window).resize(function () {
     myecharts_pie1.resize();
     myecharts_pie2.resize();
 });
+

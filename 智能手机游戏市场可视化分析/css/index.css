@@ -24,6 +24,13 @@ header{
     color: white;
     position: relative;
 }
+header select{
+    position: absolute;
+    left: 40px;
+    bottom: 10px;
+    border-radius: 3px;
+    outline: none;
+}
 #dataTime{
     position: absolute;
     right: 30px;
