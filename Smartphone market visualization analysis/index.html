@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>国内智能手机市场可视化分析</title>
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/echarts.min.js"></script>
+    <script src="js/shine.js"></script>
+    <script src="js/china.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<header>
+    <p>国内智能手机市场可视化分析</p>
+    <a id="dataTime" href="#"></a>
+    <select name="year">
+        <!--<option value="2015">2015年</option>-->
+        <!--<option value="2016">2016年</option>-->
+        <option value="2017" selected="selected">2017年</option>
+        <option value="2018">2018年</option>
+    </select>
+</header>
+<div class="box">
+    <div class="left">
+        <div class="top">
+            <div id="myecharts_barline1" class="echarts"></div>
+            <span class="lt"></span>
+            <span class="rt"></span>
+            <span class="rb"></span>
+            <span class="lb"></span>
+        </div>
+        <div class="bottom">
+            <div id="myecharts_bar" class="echarts"></div>
+            <span class="lt"></span>
+            <span class="rt"></span>
+            <span class="rb"></span>
+            <span class="lb"></span>
+        </div>
+    </div>
+    <div class="center">
+        <div class="top">
+            <div id="myecharts_map" class="echarts"></div>
+            <span class="lt"></span>
+            <span class="rt"></span>
+            <span class="rb"></span>
+            <span class="lb"></span>
+        </div>
+        <div class="bottom">
+            <div id="myecharts_line" class="echarts"></div>
+            <span class="lt"></span>
+            <span class="rt"></span>
+            <span class="rb"></span>
+            <span class="lb"></span>
+        </div>
+    </div>
+    <div class="right">
+        <div class="top">
+            <div id="myecharts_radar" class="echarts"></div>
+            <span class="lt"></span>
+            <span class="rt"></span>
+            <span class="rb"></span>
+            <span class="lb"></span>
+        </div>
+        <div class="bottom">
+            <div id="myecharts_pie" class="echarts"></div>
+            <span class="lt"></span>
+            <span class="rt"></span>
+            <span class="rb"></span>
+            <span class="lb"></span>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="js/index.js"></script>
